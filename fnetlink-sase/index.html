@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>光联世纪 | SASE融合网关 × NSOC全托管</title>
+    <meta name="description" content="国内多分支企业分支边界安全专家。SD-WAN组网 + SASE安全 + NSOC全托管，一站式守护企业网络边界。">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00D4FF',
+                        secondary: '#3B82F6',
+                        dark: '#0B0F19',
+                        darker: '#05070A',
+                        surface: '#151A25',
+                        muted: '#94A3B8',
+                        accent: '#10B981'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', 'Noto Sans SC', sans-serif; background-color: #0B0F19; color: #E2E8F0; }
+        .gradient-text { background: linear-gradient(135deg, #00D4FF 0%, #3B82F6 50%, #10B981 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .glass { background: rgba(21, 26, 37, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .glow { box-shadow: 0 0 40px rgba(0, 212, 255, 0.15); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); border-color: rgba(0, 212, 255, 0.3); box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1); }
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .grid-bg { background-image: radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 30px 30px; }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-dark">G</div>
+                <span class="text-xl font-semibold tracking-tight">光联世纪 <span class="text-xs text-muted font-normal ml-1">FNETLINK</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-muted">
+                <a href="#solutions" class="hover:text-primary transition">解决方案</a>
+                <a href="#nsoc" class="hover:text-primary transition">NSOC运营</a>
+                <a href="#industries" class="hover:text-primary transition">行业场景</a>
+                <a href="#contact" class="hover:text-primary transition">联系我们</a>
+            </div>
+            <a href="#contact" class="hidden md:inline-flex px-4 py-2 rounded-full bg-primary text-dark font-semibold text-sm hover:bg-white transition">免费安全评估</a>
+            <button class="md:hidden text-white" id="menuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 grid-bg">
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-6 text-center fade-in">
+            <div class="inline-flex px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-medium mb-6">🚀 SD-WAN 全面升级为 SASE 融合安全网关</div>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                分支网络，<span class="gradient-text">天生就该安全</span>
+            </h1>
+            <p class="text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+                组网 × 安全 × 托管，一站式交付。<br>
+                让每一个分支都拥有企业级安全边界，无需额外安全团队。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contact" class="px-8 py-4 rounded-xl bg-primary text-dark font-semibold text-lg hover:bg-white transition glow">📞 预约方案演示</a>
+                <a href="#solutions" class="px-8 py-4 rounded-xl border border-white/20 text-white font-semibold text-lg hover:border-primary hover:text-primary transition">了解解决方案 →</a>
+            </div>
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-white/5 pt-8">
+                <div><div class="text-3xl font-bold text-white">35-45%</div><div class="text-sm text-muted mt-1">企业有完整分支防护</div></div>
+                <div><div class="text-3xl font-bold text-white">0</div><div class="text-sm text-muted mt-1">专职安全人员需求</div></div>
+                <div><div class="text-3xl font-bold text-white">&lt;15min</div><div class="text-sm text-muted mt-1">平均威胁响应时间</div></div>
+                <div><div class="text-3xl font-bold text-white">7×24</div><div class="text-sm text-muted mt-1">NSOC全天候运营</div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Pain Points -->
+    <section class="py-24 bg-darker">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">为什么你的分支网络在"裸奔"？</h2>
+            <p class="text-muted text-center max-w-2xl mx-auto mb-16">55-65% 的多分支企业缺乏有效的边界防护。不是不需要，而是不会管、管不好。</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass p-8 rounded-2xl card-hover">
+                    <div class="text-4xl mb-4">🕳️</div>
+                    <h3 class="text-xl font-semibold mb-2">分支越多，边界越薄</h3>
+                    <p class="text-muted leading-relaxed">门店/工厂直接暴露公网，仅靠运营商路由器。端口扫描、暴力破解、漏洞利用防不胜防。</p>
+                </div>
+                <div class="glass p-8 rounded-2xl card-hover">
+                    <div class="text-4xl mb-4">🔧</div>
+                    <h3 class="text-xl font-semibold mb-2">买了设备，没人会管</h3>
+                    <p class="text-muted leading-relaxed">策略配置复杂、规则库更新滞后、日志无人分析。安全设备沦为"心理安慰"，实际形同虚设。</p>
+                </div>
+                <div class="glass p-8 rounded-2xl card-hover">
+                    <div class="text-4xl mb-4">🦠</div>
+                    <h3 class="text-xl font-semibold mb-2">一处失陷，全网连锁</h3>
+                    <p class="text-muted leading-relaxed">35% 的勒索软件通过薄弱分支入侵。无微隔离与零信任，横向移动直达核心业务系统。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions -->
+    <section id="solutions" class="py-24 relative grid-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">SASE 融合安全架构</h2>
+            <p class="text-muted text-center max-w-2xl mx-auto mb-16">一台设备，组网+安全。从 SD-WAN 到 SASE，平滑演进，无需推倒重来。</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-surface p-6 rounded-xl border border-white/10 hover:border-primary/50 transition">
+                    <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-2xl mb-4">🌐</div>
+                    <h3 class="font-semibold text-lg mb-2">SD-WAN 智能组网</h3>
+                    <p class="text-sm text-muted mb-4">多链路负载均衡，应用级智能路由，保障核心业务永不掉线。</p>
+                    <ul class="text-xs text-muted space-y-1"><li>• 广域网优化</li><li>• 智能路径选择</li><li>• 云端互联</li></ul>
+                </div>
+                <div class="bg-surface p-6 rounded-xl border border-white/10 hover:border-primary/50 transition">
+                    <div class="w-12 h-12 rounded-lg bg-green-500/20 flex items-center justify-center text-2xl mb-4">🛡️</div>
+                    <h3 class="font-semibold text-lg mb-2">NGFW + IPS 边界防护</h3>
+                    <p class="text-sm text-muted mb-4">下一代防火墙深度检测，IPS 实时阻断已知/未知威胁。</p>
+                    <ul class="text-xs text-muted space-y-1"><li>• 应用层过滤</li><li>• 入侵防御</li><li>• URL/域名库</li></ul>
+                </div>
+                <div class="bg-surface p-6 rounded-xl border border-white/10 hover:border-primary/50 transition">
+                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-2xl mb-4">🔐</div>
+                    <h3 class="font-semibold text-lg mb-2">ZTNA 零信任访问</h3>
+                    <p class="text-sm text-muted mb-4">身份驱动访问控制，永不信任始终验证。替代传统 VPN。</p>
+                    <ul class="text-xs text-muted space-y-1"><li>• 动态权限下发</li><li>• 最小权限原则</li><li>• 远程办公安全</li></ul>
+                </div>
+                <div class="bg-surface p-6 rounded-xl border border-white/10 hover:border-primary/50 transition">
+                    <div class="w-12 h-12 rounded-lg bg-orange-500/20 flex items-center justify-center text-2xl mb-4">🔍</div>
+                    <h3 class="font-semibold text-lg mb-2">EDR 终端威胁响应</h3>
+                    <p class="text-sm text-muted mb-4">端点检测与响应，行为分析+沙箱联动，快速隔离感染主机。</p>
+                    <ul class="text-xs text-muted space-y-1"><li>• 勒索软件拦截</li><li>• 进程行为监控</li><li>• 自动隔离响应</li></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NSOC -->
+    <section id="nsoc" class="py-24 bg-darker">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">你的安全运营部<br><span class="gradient-text">我们替你建</span></h2>
+                    <p class="text-muted text-lg mb-8">产品可以被复制，但"7×24 NSOC 运营 + 客户成功"的服务能力是长期壁垒。我们不卖盒子，我们交付的是<span class="text-white font-medium">持续的安全能力</span>。</p>
+                    <div class="space-y-4">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary mt-1">✓</div>
+                            <div>
+                                <h4 class="font-semibold">全天候威胁监控与响应</h4>
+                                <p class="text-sm text-muted">安全专家 7×24 值守，平均 15 分钟内完成告警研判与响应闭环。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary mt-1">✓</div>
+                            <div>
+                                <h4 class="font-semibold">主动策略调优与更新</h4>
+                                <p class="text-sm text-muted">每周威胁情报同步，防火墙/IPS 规则库自动更新，策略持续收敛。</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-primary mt-1">✓</div>
+                            <div>
+                                <h4 class="font-semibold">开箱即合规</h4>
+                                <p class="text-sm text-muted">等保 2.0 / 数据安全法 / 个人信息保护法，合规报告一键导出。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-xl"></div>
+                    <div class="relative glass p-8 rounded-2xl border border-white/10">
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <div class="bg-dark/50 p-4 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-accent">99.9%</div>
+                                <div class="text-xs text-muted mt-1">服务可用性 SLA</div>
+                            </div>
+                            <div class="bg-dark/50 p-4 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-primary">24/7</div>
+                                <div class="text-xs text-muted mt-1">专家值守</div>
+                            </div>
+                            <div class="bg-dark/50 p-4 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-yellow-400">&lt;5min</div>
+                                <div class="text-xs text-muted mt-1">高危告警触达</div>
+                            </div>
+                            <div class="bg-dark/50 p-4 rounded-lg text-center">
+                                <div class="text-2xl font-bold text-purple-400">月度</div>
+                                <div class="text-xs text-muted mt-1">安全评估报告</div>
+                            </div>
+                        </div>
+                        <div class="bg-dark/50 p-4 rounded-lg border border-white/5">
+                            <div class="flex justify-between text-xs text-muted mb-2"><span>本月拦截威胁</span><span>1,247 次</span></div>
+                            <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden"><div class="bg-primary h-full w-3/4 rounded-full"></div></div>
+                            <div class="flex justify-between text-xs text-muted mt-3 mb-2"><span>合规评分</span><span>92 / 100</span></div>
+                            <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden"><div class="bg-accent h-full w-[92%] rounded-full"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries -->
+    <section id="industries" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">聚焦六大核心行业</h2>
+            <p class="text-muted text-center max-w-2xl mx-auto mb-16">基于 SD-WAN 客户分布与行业安全需求，提供场景化解决方案。</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group bg-surface rounded-xl p-6 border border-white/10 hover:border-primary/40 transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-4"><span class="text-2xl">🛒</span><span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary">P0 优先</span></div>
+                    <h3 class="font-semibold text-lg mb-2">零售 / 连锁门店</h3>
+                    <p class="text-sm text-muted mb-4">门店数量庞大、IT能力为零、支付合规要求高。SD-WAN+ZTNA 实现网络隔离与云端管控。</p>
+                    <div class="text-xs text-primary font-medium">查看详情 →</div>
+                </div>
+                <div class="group bg-surface rounded-xl p-6 border border-white/10 hover:border-primary/40 transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-4"><span class="text-2xl">🏭</span><span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary">P0 优先</span></div>
+                    <h3 class="font-semibold text-lg mb-2">智能制造 / 工厂</h3>
+                    <p class="text-sm text-muted mb-4">IT/OT 融合安全需求增长，工控设备防护薄弱。分支网关+微隔离保护生产网。</p>
+                    <div class="text-xs text-primary font-medium">查看详情 →</div>
+                </div>
+                <div class="group bg-surface rounded-xl p-6 border border-white/10 hover:border-primary/40 transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-4"><span class="text-2xl">🏦</span><span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary">P1 重点</span></div>
+                    <h3 class="font-semibold text-lg mb-2">金融网点 / 分行</h3>
+                    <p class="text-sm text-muted mb-4">强监管驱动（银保监会/人行），信创合规要求紧迫。标准化网点安全替换方案。</p>
+                    <div class="text-xs text-primary font-medium">查看详情 →</div>
+                </div>
+                <div class="group bg-surface rounded-xl p-6 border border-white/10 hover:border-primary/40 transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-4"><span class="text-2xl">🚚</span><span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary">P1 培育</span></div>
+                    <h3 class="font-semibold text-lg mb-2">物流 / 仓储</h3>
+                    <p class="text-sm text-muted mb-4">末端网点分散、成本敏感。轻量级 SASE + 托管服务打开头部客户市场。</p>
+                    <div class="text-xs text-primary font-medium">查看详情 →</div>
+                </div>
+                <div class="group bg-surface rounded-xl p-6 border border-white/10 hover:border-primary/40 transition cursor-pointer">
+                    <div class="flex justify-between items-start mb-4"><span class="text-2xl">🏥</span><span class="text-xs px-2 py-1 rounded bg-primary/10 text-primary">P2 潜力</span></div>
+                    <h3 class="font-semibold text-lg mb-2">医疗 / 教育集团</h3>
+                    <p class="text-sm text-muted mb-4">政策驱动中，患者隐私与教育数据保护。适合中长期政策窗口切入。</p>
+                    <div class="text-xs text-primary font-medium">查看详情 →</div>
+                </div>
+                <div class="group bg-surface rounded-xl p-6 border border-white/10 hover:border-primary/40 transition cursor-pointer flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-3xl mb-2">💡</div>
+                        <h3 class="font-semibold">你的行业？</h3>
+                        <p class="text-sm text-muted mt-2">联系我们获取定制化方案</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section id="contact" class="py-24 bg-darker relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">你的分支网络，真的安全吗？</h2>
+            <p class="text-muted mb-12">留下联系方式，获取免费《企业分支安全成熟度评估》与行业专属方案。</p>
+            
+            <form class="bg-surface p-8 rounded-2xl border border-white/10 max-w-lg mx-auto text-left space-y-4" onsubmit="event.preventDefault(); alert('提交成功！我们的安全架构师将在24小时内联系您。');">
+                <div>
+                    <label class="block text-sm font-medium mb-1">企业名称</label>
+                    <input type="text" class="w-full px-4 py-3 rounded-lg bg-dark border border-white/10 focus:border-primary focus:outline-none text-white placeholder-muted" placeholder="请输入企业全称">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">联系人</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-lg bg-dark border border-white/10 focus:border-primary focus:outline-none text-white placeholder-muted" placeholder="姓名">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">联系电话</label>
+                        <input type="tel" class="w-full px-4 py-3 rounded-lg bg-dark border border-white/10 focus:border-primary focus:outline-none text-white placeholder-muted" placeholder="手机号">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">所属行业</label>
+                        <select class="w-full px-4 py-3 rounded-lg bg-dark border border-white/10 focus:border-primary focus:outline-none text-white">
+                            <option>零售/连锁</option>
+                            <option>制造</option>
+                            <option>金融</option>
+                            <option>物流</option>
+                            <option>医疗/教育</option>
+                            <option>其他</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">分支数量</label>
+                        <select class="w-full px-4 py-3 rounded-lg bg-dark border border-white/10 focus:border-primary focus:outline-none text-white">
+                            <option>2-10个</option>
+                            <option>11-50个</option>
+                            <option>51-200个</option>
+                            <option>200+个</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-4 rounded-lg bg-primary text-dark font-bold text-lg hover:bg-white transition mt-2">📥 提交获取免费评估</button>
+                <p class="text-xs text-muted text-center mt-2">我们承诺严格保护您的隐私信息，绝不用于营销骚扰。</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/5 bg-dark">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-xs font-bold text-dark">G</div>
+                <span class="text-sm text-muted">© 2026 深圳市光联世纪信息科技有限公司 保留所有权利</span>
+            </div>
+            <div class="flex gap-6 text-sm text-muted">
+                <a href="#" class="hover:text-white transition">隐私政策</a>
+                <a href="#" class="hover:text-white transition">服务条款</a>
+                <a href="#" class="hover:text-white transition">技术支持</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple fade-in on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
