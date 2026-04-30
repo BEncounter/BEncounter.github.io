@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI热点短视频选题库 · 2026年4月15日</title>
+  <style>
+    :root {
+      --bg: #0d0d14;
+      --card: #13131f;
+      --card2: #1a1a2e;
+      --accent: #7c3aed;
+      --accent2: #a855f7;
+      --accent3: #06b6d4;
+      --hot: #ef4444;
+      --gold: #f59e0b;
+      --green: #10b981;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: rgba(124,58,237,0.25);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(135deg, #1e0f3c 0%, #0d0d14 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 20px 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 70%);
+    }
+    .header-tag {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .header h1 {
+      font-size: clamp(26px, 5vw, 48px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2) 70%, var(--accent3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .header-sub {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .header-date {
+      margin-top: 14px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .header-date span {
+      background: rgba(124,58,237,0.15);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 14px;
+      font-size: 13px;
+      color: var(--accent2);
+    }
+
+    /* ===== LAYOUT ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+    /* ===== SECTION TITLE ===== */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+      margin-top: 52px;
+    }
+    .section-num {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 16px; color: #fff;
+      flex-shrink: 0;
+    }
+    .section-head h2 {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 800;
+      color: #fff;
+    }
+    .section-head h2 span {
+      color: var(--accent2);
+    }
+
+    /* ===== TOP5 CARDS ===== */
+    .top5-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .top5-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .top5-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(124,58,237,0.25);
+    }
+    .top5-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    }
+    .top5-card:nth-child(1)::before { background: linear-gradient(90deg, #ef4444, #f97316); }
+    .top5-card:nth-child(2)::before { background: linear-gradient(90deg, #a855f7, #7c3aed); }
+    .top5-card:nth-child(3)::before { background: linear-gradient(90deg, #06b6d4, #3b82f6); }
+    .top5-card:nth-child(4)::before { background: linear-gradient(90deg, #10b981, #059669); }
+    .top5-card:nth-child(5)::before { background: linear-gradient(90deg, #f59e0b, #d97706); }
+    .top5-rank {
+      font-size: 48px;
+      font-weight: 900;
+      opacity: 0.07;
+      position: absolute;
+      top: 8px; right: 16px;
+      line-height: 1;
+    }
+    .top5-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .badge-hot { background: rgba(239,68,68,0.2); color: #ef4444; border: 1px solid rgba(239,68,68,0.4); }
+    .badge-viral { background: rgba(168,85,247,0.2); color: #a855f7; border: 1px solid rgba(168,85,247,0.4); }
+    .badge-trend { background: rgba(6,182,212,0.2); color: #06b6d4; border: 1px solid rgba(6,182,212,0.4); }
+    .badge-alarm { background: rgba(245,158,11,0.2); color: #f59e0b; border: 1px solid rgba(245,158,11,0.4); }
+    .badge-opp { background: rgba(16,185,129,0.2); color: #10b981; border: 1px solid rgba(16,185,129,0.4); }
+
+    .top5-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .top5-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .top5-tag-row {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .top5-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      padding: 2px 8px;
+    }
+
+    /* ===== TOPIC CARDS ===== */
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .topic-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      transition: transform .2s;
+    }
+    .topic-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .topic-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .topic-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+    .topic-rows { display: flex; flex-direction: column; gap: 8px; }
+    .topic-row {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+    .topic-icon {
+      font-size: 14px;
+      flex-shrink: 0;
+      line-height: 1.7;
+    }
+    .topic-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent2);
+      min-width: 56px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .topic-text {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* ===== CONTROVERSY ===== */
+    .controversy-list { display: flex; flex-direction: column; gap: 18px; }
+    .controversy-item {
+      background: var(--card);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-left: 4px solid var(--hot);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .controversy-item h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .controversy-item p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+    .side-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .side {
+      flex: 1;
+      min-width: 150px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .side-label {
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .side-a .side-label { color: var(--hot); }
+    .side-b .side-label { color: var(--green); }
+    .side p { font-size: 12px; color: var(--muted); margin: 0; }
+    .discussion-q {
+      margin-top: 12px;
+      background: rgba(124,58,237,0.1);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--accent2);
+    }
+    .discussion-q::before { content: '💬 评论区话题：'; font-weight: 700; }
+
+    /* ===== SCRIPTS ===== */
+    .script-list { display: flex; flex-direction: column; gap: 24px; }
+    .script-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .script-header {
+      background: linear-gradient(90deg, rgba(124,58,237,0.2), rgba(6,182,212,0.1));
+      border-bottom: 1px solid var(--border);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .script-sn {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .script-header h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .script-body { padding: 20px; }
+    .script-section { margin-bottom: 16px; }
+    .script-section:last-child { margin-bottom: 0; }
+    .ss-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent3);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .script-text {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 10px 14px;
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .script-time {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    /* ===== MONETIZE ===== */
+    .monetize-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+    .monetize-card {
+      background: var(--card);
+      border: 1px solid rgba(16,185,129,0.2);
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .monetize-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .monetize-card h3 .icon { font-size: 18px; }
+    .monetize-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .monetize-card ul li {
+      font-size: 13px;
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
+    }
+    .monetize-card ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+    .monetize-hook {
+      margin-top: 12px;
+      background: rgba(16,185,129,0.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--green);
+      font-style: italic;
+    }
+
+    /* ===== GITHUB SECTION ===== */
+    .github-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .gh-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+    }
+    .gh-card h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent2);
+      margin-bottom: 4px;
+    }
+    .gh-card p { font-size: 12px; color: var(--muted); }
+    .gh-star {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      margin-top: 60px;
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ===== ALERT BAR ===== */
+    .alert-bar {
+      background: linear-gradient(90deg, rgba(239,68,68,0.15), rgba(245,158,11,0.1));
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 12px;
+      padding: 14px 20px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .alert-icon { font-size: 20px; }
+    .alert-text { font-size: 13px; color: var(--text); }
+    .alert-text strong { color: var(--hot); }
+
+    @media (max-width: 600px) {
+      .top5-grid, .topic-grid, .monetize-grid, .github-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div style="position:relative; z-index:1;">
+    <div class="header-tag">🔥 DAILY CONTENT FACTORY</div>
+    <h1>AI热点短视频选题库</h1>
+    <p class="header-sub">2026年4月15日 · 数据覆盖周期：4月14—15日 · 基于真实热点</p>
+    <div class="header-date">
+      <span>📡 GPT-6正式发布</span>
+      <span>🤖 人形机器人产量+94%</span>
+      <span>📊 斯坦福423页AI报告</span>
+      <span>💀 AI裁员潮 7.8万人</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 警示条 -->
+  <div class="alert-bar">
+    <span class="alert-icon">⚡</span>
+    <span class="alert-text">
+      <strong>今日核心信号：</strong>GPT-6昨日正式上线（5-6万亿参数，性能+40%）；斯坦福报告揭示中美差距仅剩2.7%；中国人形机器人产量今年将暴增94%；全球已有7.8万人因AI失业——这些内容今天录制，明天就能爆。
+    </span>
+  </div>
+
+  <!-- ===== SECTION 1: TOP5 ===== -->
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <h2>本周最容易爆的 <span>5个AI话题</span></h2>
+  </div>
+
+  <div class="top5-grid">
+    <div class="top5-card">
+      <span class="top5-rank">01</span>
+      <span class="top5-badge badge-hot">🔥 今日顶流</span>
+      <h3>GPT-6来了，这次不是升级，是降维打击</h3>
+      <p>5-6万亿参数，200万Token上下文，性能较上代提升40%。OpenAI昨天正式发布，这是18个月研发的结晶。普通人最该问的是：它现在能替我做什么？</p>
+      <div class="top5-tag-row">
+        <span class="top5-tag">GPT-6</span>
+        <span class="top5-tag">模型发布</span>
+        <span class="top5-tag">技术升级</span>
+      </div>
+    </div>
+
+    <div class="top5-card">
+      <span class="top5-rank">02</span>
+      <span class="top5-badge badge-alarm">⚠️ 高焦虑</span>
+      <h3>7.8万人失业，AI裁员潮到底来没来？</h3>
+      <p>2026年一季度全球科技行业裁员近8万人，近半归因AI替代。甲骨文裁员3万人同时净利暴涨95%。这说明一个残酷逻辑：越赚钱，越裁人。</p>
+      <div class="top5-tag-row">
+        <span class="top5-tag">裁员</span>
+        <span class="top5-tag">就业替代</span>
+        <span class="top5-tag">危机感</span>
+      </div>
+    </div>
+
+    <div class="top5-card">
+      <span class="top5-rank">03</span>
+      <span class="top5-badge badge-viral">💥 争议爆款</span>
+      <h3>斯坦福说：中美AI差距只剩2.7%，你信吗？</h3>
+      <p>斯坦福423页《2026年AI指数报告》刚出炉：中美顶级模型性能差距已缩至2.7%，DeepSeek、清华冲入全球前十。但美国AI投资是中国23倍——差距真抹平了？</p>
+      <div class="top5-tag-row">
+        <span class="top5-tag">斯坦福报告</span>
+        <span class="top5-tag">中美竞争</span>
+        <span class="top5-tag">DeepSeek</span>
+      </div>
+    </div>
+
+    <div class="top5-card">
+      <span class="top5-rank">04</span>
+      <span class="top5-badge badge-opp">🚀 机会向</span>
+      <h3>中国人形机器人产量今年暴增94%，风口来了</h3>
+      <p>TrendForce：2026年中国人形机器人产量同比激增94%，宇树+智元占约80%市场。CEAI大会发布《具身智能十五大方向》。这不是实验室，是工厂已经在转型了。</p>
+      <div class="top5-tag-row">
+        <span class="top5-tag">具身智能</span>
+        <span class="top5-tag">人形机器人</span>
+        <span class="top5-tag">产业机会</span>
+      </div>
+    </div>
+
+    <div class="top5-card">
+      <span class="top5-rank">05</span>
+      <span class="top5-badge badge-trend">📡 技术趋势</span>
+      <h3>AI能自己黑自己了：Claude 4小时攻破内核</h3>
+      <p>Claude Mythos Preview以72.4%成功率自主发现零日漏洞，还独立攻破FreeBSD内核。45家巨头联手组建AI安全联防。AI的能力已超出大多数人的想象边界。</p>
+      <div class="top5-tag-row">
+        <span class="top5-tag">AI安全</span>
+        <span class="top5-tag">自主漏洞</span>
+        <span class="top5-tag">技术边界</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== SECTION 2: 10 TOPIC CARDS ===== -->
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <h2>10个热点 <span>选题卡片</span></h2>
+  </div>
+
+  <div class="topic-grid">
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 01 · 焦虑型</div>
+      <h3>程序员，你知道Claude Code的SWE-bench得分是80.8%吗？</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">AI写代码不是辅助了，是在抢你的饭碗</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">Claude Code以80.8%得分领跑，初级程序员替代率已超60%</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">用好AI编程工具的程序员，效率是普通人的10倍</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">AI不会取代程序员，但会用AI的程序员会取代不会用的</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你认为AI编程工具5年内会干掉多少程序员？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 02 · 数据型</div>
+      <h3>斯坦福423页报告一句话让所有人沉默：AI让25岁以下工程师就业下滑20%</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">最该看这份报告的不是专家，是刚毕业的你</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">年轻工程师失业率暴升，应届生赶上了史上最难就业季</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">全球AI相关岗位仍在增长，掌握AI技能的人才缺口超百万</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">数据不骗人：不懂AI，学历越高，摔得越狠</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你觉得应届生该把时间花在考证上，还是学AI？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 03 · 震撼型</div>
+      <h3>GPT-6来了！200万Token是什么概念？相当于读完2000本书</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">它一次能读完你书架所有书，然后帮你写论文</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">知识型工作者的护城河在GPT-6面前几乎消失了</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">普通人第一次有机会借助AI在垂直领域建立"信息优势"</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">GPT-6不是搜索引擎升级版，是你的AI合伙人</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你会为GPT-6月付费吗？多少钱你愿意？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 04 · 冲击型</div>
+      <h3>甲骨文一边裁3万人一边利润涨95%，这才是AI最残忍的真相</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">AI让公司越赚越多，却让员工越来越少</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">你的公司正在用AI悄悄替代你，只是还没告诉你</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">懂得用AI提升个人效率的员工，恰恰是公司最想留的人</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">企业不是坏人，但资本永远选效率——你得让自己不可替代</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你所在行业用AI替代员工严重吗？你感受到了吗？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 05 · 机会型</div>
+      <h3>宇树机器人今年要造6万台，普通人能从这个风口吃到肉吗？</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">2026年人形机器人爆发，风口来了，你准备好了吗</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">制造业工人、质检员将是第一批被机器人替代的岗位</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">机器人产业链爆发，AI运维、智能硬件调试需求激增</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">这轮不是买股票的机会，是转型到"机器人懂的人"的机会</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你家里会不会在5年内买一台人形机器人打扫卫生？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 06 · 工具型</div>
+      <h3>GitHub上这个项目单周涨了1.4万颗星，AI Agent正在颠覆开发流程</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">这个开源项目让AI从"能说话"变成"能干活"</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">不懂Agent框架，你在AI圈已经慢了半年</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">hermes-agent开源，普通人搭建AI自动化工作流的成本降到零</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">AI Agent才是2026年最值得学的技能，没有之一</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你现在有在用任何AI自动化工具吗？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 07 · 危机型</div>
+      <h3>AI 4小时攻破FreeBSD内核，网络安全工程师慌了吗？</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">黑客有了AI助理，你的数据现在安全吗？</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">AI自主攻击从理论变现实，CVE漏洞利用窗口仅20小时</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">懂AI安全的人才，薪资溢价已经超过50%</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">AI让进攻变得更容易，但防守同样需要AI武装自己</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你觉得AI做黑客工具是技术进步还是潘多拉魔盒？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 08 · 观察型</div>
+      <h3>中国AI开源崛起：GLM-5.1和Qwen3.5横扫全球评测榜单</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">国产AI不再是追赶者了，这次是并驾齐驱</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">还在等"买国外AI用就好了"的人，已经错过最好的入场时机</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">国产大模型生态爆发，本地化AI部署需求迎来爆发期</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">2026年，中国AI已经不是弟弟了</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你更常用国产AI还是海外AI？为什么？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 09 · 生活型</div>
+      <h3>谁说AI是程序员的事？这个工具让你每天省2小时</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">普通人用AI提效，一天省2小时，一年多出30天</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">你同事已经在用AI偷偷多干一倍活，你还不知道</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">openscreen开源录屏+AI剪辑工具，普通人也能做专业内容</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">AI工具不是炫技，是真实的效率武器，不用就是吃亏</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你每天用AI做的最多的事情是什么？</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-card">
+      <div class="topic-num">TOPIC 10 · 反转型</div>
+      <h3>45家科技巨头联手搞"AI安全联防"，到底在防谁？</h3>
+      <div class="topic-rows">
+        <div class="topic-row">
+          <span class="topic-icon">🎯</span>
+          <span class="topic-label">标题角度</span>
+          <span class="topic-text">苹果+英伟达+谷歌同时站在一条线，这事不寻常</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">😰</span>
+          <span class="topic-label">焦虑切口</span>
+          <span class="topic-text">连AI的创造者们都开始害怕AI了，你还不重视？</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💡</span>
+          <span class="topic-label">机会切口</span>
+          <span class="topic-text">AI治理和AI安全将成为未来十年最稀缺的复合型岗位</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">🎙️</span>
+          <span class="topic-label">核心观点</span>
+          <span class="topic-text">技术在跑，安全在追，这个追赶游戏才是真正的战场</span>
+        </div>
+        <div class="topic-row">
+          <span class="topic-icon">💬</span>
+          <span class="topic-label">争议问题</span>
+          <span class="topic-text">你觉得AI应该被严格管控还是自由发展？</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- ===== SECTION 3: CONTROVERSY ===== -->
+  <div class="section-head">
+    <div class="section-num">3</div>
+    <h2>5个<span>争议观点</span>（让评论区吵起来）</h2>
+  </div>
+
+  <div class="controversy-list">
+
+    <div class="controversy-item">
+      <h3>🔥 观点一：学AI根本来不及，不如先想清楚自己适合干什么</h3>
+      <p>GPT-6发布、Claude Code领跑，AI能力已经超出普通人学习速度，有人认为追着学工具永远追不上，还不如找准赛道差异化。</p>
+      <div class="side-row">
+        <div class="side side-a"><div class="side-label">⚔️ 正方</div><p>技术更新太快，今天学的明天就过时，不如专注人脉和软技能</p></div>
+        <div class="side side-b"><div class="side-label">🛡️ 反方</div><p>不学AI就是等死，工具不会用=放弃效率优势，差距会越来越大</p></div>
+      </div>
+      <div class="discussion-q">你觉得现在开始学AI还来得及吗？</div>
+    </div>
+
+    <div class="controversy-item">
+      <h3>🔥 观点二：中美AI差距只剩2.7%，中国已经赢了？</h3>
+      <p>斯坦福报告显示技术性能差距已极小，但美国AI投资是中国的23倍，基础科研也更领先，有人认为"性能接近"并不等于"整体能力接近"。</p>
+      <div class="side-row">
+        <div class="side side-a"><div class="side-label">⚔️ 正方</div><p>模型性能接近就是真超越，产品落地才是竞争的战场</p></div>
+        <div class="side side-b"><div class="side-label">🛡️ 反方</div><p>投资差23倍代表生态差距巨大，2.7%只是表面数字</p></div>
+      </div>
+      <div class="discussion-q">你认为中国AI真正追平美国了吗？</div>
+    </div>
+
+    <div class="controversy-item">
+      <h3>🔥 观点三：程序员才是这轮AI浪潮中最该慌的人</h3>
+      <p>Claude Code SWE-bench得分80.8%，AI编程工具覆盖了大量初中级开发任务。有观点认为"程序员会消亡"，也有人认为"程序员地位会变得更高"。</p>
+      <div class="side-row">
+        <div class="side side-a"><div class="side-label">⚔️ 正方</div><p>初级程序员3年内会大量失业，外包公司会死一批</p></div>
+        <div class="side side-b"><div class="side-label">🛡️ 反方</div><p>AI让开发效率提升，行业需求只会更旺，优秀程序员反而更值钱</p></div>
+      </div>
+      <div class="discussion-q">你是程序员吗？你怕AI吗？</div>
+    </div>
+
+    <div class="controversy-item">
+      <h3>🔥 观点四：工厂用机器人替代工人，这是进步还是不负责任？</h3>
+      <p>人形机器人产量今年暴增94%，已有工厂开始大批引入替代一线工人。支持者认为解放人力是文明进步，反对者认为政府和企业应该承担更多社会责任。</p>
+      <div class="side-row">
+        <div class="side side-a"><div class="side-label">⚔️ 正方</div><p>机器干苦活是解放，人类去做更有创造力的工作</p></div>
+        <div class="side side-b"><div class="side-label">🛡️ 反方</div><p>现实是很多工人根本无法转型，这是在制造社会问题</p></div>
+      </div>
+      <div class="discussion-q">工厂用机器人替代工人，你支持还是反对？</div>
+    </div>
+
+    <div class="controversy-item">
+      <h3>🔥 观点五：AI安全越管越严，会不会反而拖慢中国AI发展？</h3>
+      <p>工信部发布AI高价值场景清单同时，监管框架也在收紧。45家巨头联手组建AI安全联防，有人担心监管过度会让中国AI错失窗口期。</p>
+      <div class="side-row">
+        <div class="side side-a"><div class="side-label">⚔️ 正方</div><p>没有安全边界的AI发展是作死，早管早受益</p></div>
+        <div class="side side-b"><div class="side-label">🛡️ 反方</div><p>监管过度=扼杀创新，中国AI已经追上来了，别自缚手脚</p></div>
+      </div>
+      <div class="discussion-q">你觉得AI监管是必要的吗？</div>
+    </div>
+
+  </div>
+
+
+  <!-- ===== SECTION 4: SCRIPTS ===== -->
+  <div class="section-head">
+    <div class="section-num">4</div>
+    <h2>5个可直接录制的 <span>短视频脚本</span></h2>
+  </div>
+
+  <div class="script-list">
+
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-sn">1</span>
+        <h3>GPT-6来了！普通人到底该怎么用？</h3>
+      </div>
+      <div class="script-body">
+        <div class="script-section">
+          <div class="ss-label">⏱ 预计时长</div>
+          <span class="script-time">45-60秒 · 竖屏口播</span>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🎬 开场钩子（0-5秒）</div>
+          <div class="script-text">GPT-6昨天正式上线了，5到6万亿参数，比上一代强40%。但我想说的不是这个参数有多厉害——我想问你：你知道它现在能帮你干什么吗？</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">📋 核心内容（5-40秒）</div>
+          <div class="script-text">它的上下文是200万Token，相当于一次对话能读完2000本书。你可以把你所有的项目资料一股脑扔给它，让它帮你分析、规划、执行。这不是升级版的搜索引擎，是你的AI合伙人。普通人用好GPT-6，可以在信息处理、内容创作、商业策划三个方向直接起飞。</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🚀 结尾行动（40-60秒）</div>
+          <div class="script-text">我整理了一份GPT-6最适合普通人的10个使用场景，想要的在评论区扣1，我私信给你。学不学是你的事，但错过这次，下次再说，就真的晚了。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-sn">2</span>
+        <h3>7.8万人因AI失业，但还有人说AI是假话？</h3>
+      </div>
+      <div class="script-body">
+        <div class="script-section">
+          <div class="ss-label">⏱ 预计时长</div>
+          <span class="script-time">50-60秒 · 数据驱动口播</span>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🎬 开场钩子（0-5秒）</div>
+          <div class="script-text">有人说AI裁员是炒作，那我给你看几个数字，2026年第一季度，全球科技行业裁员接近8万人，其中近一半，企业明确说是因为AI替代。</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">📋 核心内容（5-40秒）</div>
+          <div class="script-text">甲骨文裁员3万人，同一季度净利润涨了95%。这说明什么？裁员不是因为赚不到钱，是因为用AI更便宜。Anthropic的CEO也说了，未来数年AI会淘汰半数初级白领岗位。这些话不是预言，是正在发生的现实。你的岗位标准化程度越高，被替代的风险就越大。</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🚀 结尾行动（40-60秒）</div>
+          <div class="script-text">我不是来吓你的，我是来告诉你，越早认清这件事，越早有时间做准备。你所在的行业有被AI替代的风险吗？评论区告诉我，我帮你分析。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-sn">3</span>
+        <h3>斯坦福423页报告说：中美AI差距只剩2.7%</h3>
+      </div>
+      <div class="script-body">
+        <div class="script-section">
+          <div class="ss-label">⏱ 预计时长</div>
+          <span class="script-time">45-55秒 · 观点型口播</span>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🎬 开场钩子（0-5秒）</div>
+          <div class="script-text">斯坦福今天发了一份423页的AI报告，结论让我惊了：中美顶级模型性能差距，只剩2.7%了。</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">📋 核心内容（5-40秒）</div>
+          <div class="script-text">DeepSeek、清华团队已经冲入全球顶尖模型前十。AI技术已经进入了"技术平权"时代。但报告也说了：美国AI投资是中国的23倍，基础科研还是领先的。所以这个2.7%，到底代表我们追上了，还是我们在某些层面打平了，真正的差距还在别处？这个问题很值得思考。</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🚀 结尾行动（40-55秒）</div>
+          <div class="script-text">我觉得不管差距怎么算，对个人来说，最重要的是：你懂不懂怎么用AI，用什么AI。评论区说说，你觉得国产AI和海外AI你更常用哪个？</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-sn">4</span>
+        <h3>人形机器人要来了！2026年中国产量暴增94%</h3>
+      </div>
+      <div class="script-body">
+        <div class="script-section">
+          <div class="ss-label">⏱ 预计时长</div>
+          <span class="script-time">45-60秒 · 机会型口播</span>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🎬 开场钩子（0-5秒）</div>
+          <div class="script-text">TrendForce刚发了一份报告：2026年，中国人形机器人产量将同比暴增94%，宇树和智元两家就占了80%。这意味着什么？</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">📋 核心内容（5-40秒）</div>
+          <div class="script-text">意味着工厂的工人、仓库的搬运工、服务业的接待员，可能比你想象的更快被替代。但同时，另一个机会在悄悄放大：机器人要运维、要调试、要管理，懂AI懂硬件的人才缺口会越来越大。这不是让你去炒概念股——这是让你想清楚，未来5年，自己要站在哪个位置。</div>
+        </div>
+        <div class="script-section">
+          <div class="ss-label">🚀 结尾行动（40-60秒）</div>
+          <div class="script-text">人形机器人产业我做过一张完整的岗位机会图，从技术到运营到销售都有，感兴趣的扣1，我发给你。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="script-card">
+      <div class="script-header">
+        <span class="script-sn">5</span>
+        <h3>GitHub
+
+
+
+
