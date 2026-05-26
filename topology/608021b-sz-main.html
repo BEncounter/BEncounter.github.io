@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>608021B-SZ-main 拓扑图</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #020617; color: #cbd5e1; font-family: 'JetBrains Mono', monospace; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  h1 { text-align: center; color: #22d3ee; font-size: 24px; margin-bottom: 10px; }
+  .subtitle { text-align: center; color: #64748b; font-size: 12px; margin-bottom: 20px; }
+  svg { background: #0f172a; border-radius: 8px; border: 1px solid #1e293b; display: block; margin: 0 auto; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 24px; }
+  .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 6px; padding: 12px; }
+  .card h3 { margin: 0 0 8px; color: #94a3b8; font-size: 12px; text-transform: uppercase; }
+  .card ul { margin: 0; padding-left: 16px; font-size: 11px; color: #cbd5e1; }
+  .card li { margin-bottom: 4px; }
+  .status { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; }
+  .status.online { background: #34d399; }
+  .status.offline { background: #ef4444; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>608021B-SZ-main 拓扑图</h1>
+  <div class="subtitle">东莞市双盈计算机技术有限公司 · SVIP · 深圳点</div>
+
+  <svg width="960" height="600" viewBox="0 0 960 600" xmlns="http://www.w3.org/2000/svg">
+    <!-- Grid Background -->
+    <rect width="100%" height="100%" fill="#020617"/>
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+      </pattern>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+      </marker>
+      <marker id="arrow-cyan" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#22d3ee"/>
+      </marker>
+      <marker id="arrow-emerald" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399"/>
+      </marker>
+      <!-- Component Template -->
+      <g id="comp-rect">
+        <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+        <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke-width="1.5"/>
+      </g>
+    </defs>
+    <rect width="100%" height="100%" fill="url(#grid)"/>
+
+    <!-- Connections (Drawn first for Z-order) -->
+    <!-- Tenant -> Site -->
+    <path d="M 480 80 L 480 140" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,4"/>
+    
+    <!-- Site -> CE Main -->
+    <path d="M 300 200 L 300 260" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow-cyan)"/>
+    <!-- Site -> CE Backup -->
+    <path d="M 660 200 L 660 260" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,4"/>
+    <!-- HRP Link -->
+    <path d="M 390 290 L 570 290" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6,4" marker-start="url(#arrow-emerald)" marker-end="url(#arrow-emerald)"/>
+    <text x="480" y="285" fill="#fbbf24" font-size="10" text-anchor="middle">HRP / 心跳</text>
+
+    <!-- CE Main -> Line 1 -->
+    <path d="M 210 290 L 150 350" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+    <!-- CE Backup -> Line 2 -->
+    <path d="M 750 290 L 810 350" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,4"/>
+
+    <!-- Line 1 -> PE -->
+    <path d="M 150 410 L 150 470" stroke="#34d399" stroke-width="2" marker-end="url(#arrow-emerald)"/>
+    <!-- Line 2 -> PE -->
+    <path d="M 810 410 L 810 470" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4,4"/>
+
+    <!-- PE Interconnection (Backbone) -->
+    <path d="M 240 500 L 720 500" stroke="#64748b" stroke-width="1.5" stroke-dasharray="8,4"/>
+    <text x="480" y="495" fill="#64748b" font-size="10" text-anchor="middle">骨干网 / MPLS / SD-WAN</text>
+
+    <!-- Component Boxes -->
+    <!-- Tenant -->
+    <g transform="translate(390, 50)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1.5"/>
+      <text x="90" y="25" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">东莞市双盈计算机</text>
+      <text x="90" y="45" fill="#94a3b8" font-size="10" text-anchor="middle">CID: 608021 · SVIP</text>
+    </g>
+
+    <!-- Site -->
+    <g transform="translate(390, 140)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="90" y="25" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">深圳点 (608021B)</text>
+      <text x="90" y="45" fill="#94a3b8" font-size="10" text-anchor="middle">深圳市南山区环球数码大厦</text>
+    </g>
+
+    <!-- CE Main -->
+    <g transform="translate(210, 260)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5"/>
+      <circle cx="160" cy="15" r="4" fill="#34d399"/>
+      <text x="90" y="25" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">608021B-SZ-main</text>
+      <text x="90" y="45" fill="#94a3b8" font-size="10" text-anchor="middle">华为 · Campus 业务</text>
+    </g>
+
+    <!-- CE Backup -->
+    <g transform="translate(570, 260)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(6, 78, 59, 0.4)" stroke="#34d399" stroke-width="1.5" opacity="0.6"/>
+      <circle cx="160" cy="15" r="4" fill="#34d399"/>
+      <text x="90" y="25" fill="#e2e8f0" font-size="12" font-weight="bold" text-anchor="middle">608021B-SZ-backup</text>
+      <text x="90" y="45" fill="#94a3b8" font-size="10" text-anchor="middle">华为 · 备用节点</text>
+    </g>
+
+    <!-- Line 1 -->
+    <g transform="translate(60, 350)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(8, 51, 68, 0.4)" stroke="#22d3ee" stroke-width="1.5"/>
+      <text x="90" y="25" fill="#22d3ee" font-size="12" font-weight="bold" text-anchor="middle">608021B1 (主线路)</text>
+      <text x="90" y="45" fill="#94a3b8" font-size="10" text-anchor="middle">40Mbps · WAN: .24/30</text>
+    </g>
+
+    <!-- Line 2 -->
+    <g transform="translate(720, 350)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="90" y="25" fill="#94a3b8" font-size="12" font-weight="bold" text-anchor="middle">608021B2 (备线路)</text>
+      <text x="90" y="45" fill="#64748b" font-size="10" text-anchor="middle">40Mbps · WAN: .248/30</text>
+    </g>
+
+    <!-- PE Main -->
+    <g transform="translate(60, 470)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(251, 146, 60, 0.3)" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="90" y="25" fill="#fb923c" font-size="12" font-weight="bold" text-anchor="middle">szd-upe3</text>
+      <text x="90" y="45" fill="#94a3b8" font-size="10" text-anchor="middle">PE · Active</text>
+    </g>
+
+    <!-- PE Backup -->
+    <g transform="translate(720, 470)">
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="#0f172a"/>
+      <rect x="0" y="0" width="180" height="60" rx="6" fill="rgba(30, 41, 59, 0.5)" stroke="#94a3b8" stroke-width="1.5"/>
+      <text x="90" y="25" fill="#94a3b8" font-size="12" font-weight="bold" text-anchor="middle">dgb-upebk2</text>
+      <text x="90" y="45" fill="#64748b" font-size="10" text-anchor="middle">PE · Active</text>
+    </g>
+
+    <!-- Legend -->
+    <g transform="translate(350, 560)">
+      <text x="0" y="0" fill="#64748b" font-size="10">━ 主用链路 (Online)  - - - 备用链路/心跳  ━ 骨干互联</text>
+    </g>
+  </svg>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3><span class="status online"></span> 主线路状态</h3>
+      <ul>
+        <li><strong>名称:</strong> 608021B1</li>
+        <li><strong>带宽:</strong> 40 Mbps</li>
+        <li><strong>WAN IP:</strong> 10.40.211.24/30</li>
+        <li><strong>接入 PE:</strong> szd-upe3</li>
+        <li><strong>协议:</strong> Enterprise / 静态路由</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="status online"></span> CE 设备信息</h3>
+      <ul>
+        <li><strong>主机名:</strong> 608021B-SZ-main</li>
+        <li><strong>厂商:</strong> 华为</li>
+        <li><strong>状态:</strong> 监控正常 (Normal)</li>
+        <li><strong>业务:</strong> Campus 业务系统</li>
+        <li><strong>冗余:</strong> HRP 主备 (vs SZ-backup)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><span class="status online"></span> 租户信息</h3>
+      <ul>
+        <li><strong>租户:</strong> 东莞市双盈计算机技术有限公司</li>
+        <li><strong>CID:</strong> 608021</li>
+        <li><strong>级别:</strong> <span style="color:#fbbf24">SVIP</span> (重点客户)</li>
+        <li><strong>服务工程师:</strong> 李工</li>
+        <li><strong>响应要求:</strong> 7x24 响应</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>
